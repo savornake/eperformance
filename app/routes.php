@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array('as' => 'auth.login', 'uses' => 'AuthenticationController@login'));
+
+Route::get('login', array('as' => 'auth.login', 'uses' => 'AuthenticationController@login'));
+Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationController@register'));
+
+Route::resource('users', 'UsersController');

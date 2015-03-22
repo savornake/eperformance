@@ -13,7 +13,14 @@
 
     <!-- Bootstrap core CSS -->
     {{HTML::style('css/bootstrap.min.css')}}
+    {{HTML::style('css/font-awesome.min.css')}}
+    {{HTML::style('css/summernote.css')}}
+    {{HTML::style('css/summernote-bs3.css')}}
+
+
+
     {{HTML::style('css/style.css')}}
+
 
 
      @yield('css')
@@ -63,11 +70,14 @@
               </ul>
             </li>
           </ul>
-         <!--  <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul> sementara ngak guna siapa tau kepake --> 
+
+          @if(Sentry::check())
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+            {{Html::linkRoute('auth.logout','Logout')}}
+            </li>
+          </ul>
+          @endif 
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -81,6 +91,13 @@
 
   </body>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    {{HTML::script('js/jquery-2.1.3.min.js')}}
+
+    {{HTML::script('js/bootstrap.min.js')}}
+    {{HTML::script('js/summernote.min.js')}}
+    
+    @yield('script')
+
+
   </body>
 </html>

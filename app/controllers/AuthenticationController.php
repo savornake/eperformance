@@ -20,6 +20,13 @@ class AuthenticationController extends BaseController {
 		return View::make('authentication.login');
 	}
 
+	public function logout()
+	{
+		Sentry::logout();
+		return Redirect::to('login');
+
+	}
+
 	public function postLogin()
 	{
 		try
@@ -32,6 +39,8 @@ class AuthenticationController extends BaseController {
 
 		    // Authenticate the user
 		    $user = Sentry::authenticate($credentials, false);
+		    return Redirect::to('home');
+	
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{

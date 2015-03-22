@@ -18,4 +18,13 @@ Route::post('login', array('as' => 'auth.login', 'uses' => 'AuthenticationContro
 
 Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationController@register'));
 
+Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
+
+
+Route::get('logout', array('as' => 'auth.logout', 'uses' => 'AuthenticationController@logout'));
+
+
+
 Route::resource('users', 'UsersController');
+
+Route::resource('renstras', 'RenstrasController');

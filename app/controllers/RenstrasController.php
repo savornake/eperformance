@@ -42,6 +42,7 @@ class RenstrasController extends \BaseController {
 		$renstra->realisasi=Input::get('realisasi');
 		$renstra->uraian=Input::get('uraian');
 		$renstra->save();
+		return Redirect::to('renstras');
 	}
 
 	/**

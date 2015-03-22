@@ -24,12 +24,12 @@
         </tr>
     </thead>
     <tbody>
-   
+        @foreach ($users as $user)
         <tr>
-            <td>1</td>
-            <td>lugas</td>
-            <td>lugas@yahoo.com</td>
-            <td>admin</td>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->first_name }}</td>
+            <td>{{ $user->email }}</td>
+            <td></td>
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>
@@ -45,7 +45,7 @@
 
             </td>
         </tr>
-   
+        @endforeach
     </tbody>
 </table>
 </div>

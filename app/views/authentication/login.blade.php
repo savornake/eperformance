@@ -9,19 +9,20 @@
 
 <div class="container">
 
-  <form class="form-signin">
+  {{Form::open(array('url'=>'login','class' =>'form-signin'))}}
+
     <h2 class="form-signin-heading">Silahkan Login</h2>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="text" id="inputEmail" class="form-control" placeholder="masuk username" required autofocus>
+    <input type="text" id="inputEmail" class="form-control" placeholder="masuk username" name='email' required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="password" required>
+    <input type="password" id="inputPassword" class="form-control" placeholder="password" name='password' required>
     <div class="checkbox">
       <label>
         <input type="checkbox" value="remember-me"> Ingat Password
       </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Masuk</button>
-  </form>
+  {{ Form::close() }}
 
 </div> <!-- /container -->
 

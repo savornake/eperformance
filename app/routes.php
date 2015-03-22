@@ -14,6 +14,8 @@
 Route::get('/', array('as' => 'auth.login', 'uses' => 'AuthenticationController@login'));
 
 Route::get('login', array('as' => 'auth.login', 'uses' => 'AuthenticationController@login'));
+Route::post('login', array('as' => 'auth.login', 'uses' => 'AuthenticationController@postLogin'));
+
 Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationController@register'));
 
 Route::resource('users', 'UsersController');

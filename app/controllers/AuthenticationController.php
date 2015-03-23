@@ -23,7 +23,7 @@ class AuthenticationController extends BaseController {
 	public function logout()
 	{
 		Sentry::logout();
-		return Redirect::to('login');
+		return Redirect::to('login'); 
 
 	}
 

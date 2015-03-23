@@ -66,7 +66,11 @@ class RenstrasController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $renstra = Renstra::find($id);
+
+        // show the edit form and pass the nerd
+        return View::make('renstras.edit')
+            ->with('renstra', $renstra);
 	}
 
 	/**
@@ -78,8 +82,24 @@ class RenstrasController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
+            // store
+            $renstra = Renstra::find($id);
+            $renstra->rencana_strategis=Input::get('rencana_strategis');
+			$renstra->rencana_kegiatan=Input::get('rencana_kegiatan');
+			$renstra->indikator=Input::get('indikator');
+			$renstra->realisasi=Input::get('realisasi');
+			$renstra->uraian=Input::get('uraian');
+			$renstra->save();
+
+            // redirect
+            Session::flash('message', 'Successfully updated renstra!');
+            return Redirect::to('renstras');
+        
+
 	}
+
+
 
 	/**
 	 * Remove the specified resource from storage.
@@ -90,7 +110,13 @@ class RenstrasController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+	
+		$renstra = renstra::find($id);
+        $renstra->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the nerd!');
+        return Redirect::to('renstras');
 	}
 
 }

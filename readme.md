@@ -2,6 +2,7 @@
 
 ### How to install for developer???
 
+- pertama install xampp
 - Pertama-tama install terlebih dahulu `git`
 - Kemudian install `composer` sebagai php dependency manager
 - Pilih lokasi folder kerja

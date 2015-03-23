@@ -25,7 +25,6 @@
   	<th>Presentase</th>
   	<th>Uraian Realisasi</th>
   	<th>Edit</th>
-
   </tr>
 
         <?php $i = 1; ?>
@@ -39,8 +38,16 @@
   	<td> {{ $renstra->realisasi }} </td>
   	<td> {{ $renstra->realisasi / $renstra->indikator*100 }} % </td>
   	<td> {{ $renstra->uraian }} </td>
-  	<td> <!-- tombol edit --><button type="button" class="btn btn-warning btn btn-primary btn-sm btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-  	<button type="button" class="btn btn-danger btn btn-primary btn-sm btn-block"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> </td> 
+  	<td> <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
+                <a class="btn btn-small btn-info" href="{{ URL::to('renstras/' . $renstra->id . '/edit') }}">Edit Renstra</a>
+  	<!-- <button type="button" class="btn btn-danger btn btn-primary btn-sm btn-block"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> -->
+    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+    <!-- we will add this later since its a little more complicated than the other two buttons -->
+                {{ Form::open(array('url' => 'renstras/' . $renstra->id, 'class' => 'pull-right')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('hapus', array('class' => 'btn btn-danger')) }}
+                {{ Form::close() }}
+     </td> 
 			
   </tr>
     <?php $i++; ?>
@@ -104,7 +111,7 @@
   <script type="text/javascript">
   
 $(document).ready(function() {
-  $('.summernote').summernote({height:70, width:536});
+  $('.summernote').summernote({height:50, width:536});
 });
 
 </script>

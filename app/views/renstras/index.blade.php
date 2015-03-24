@@ -9,9 +9,6 @@
 			{{-- HTML::linkRoute('renstras.create','Tambah',[], array('class' => 'btn btn-info pull-right')) --}}
       <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah Renstra
 		</div>
-
-
-
 	</div>
 
 
@@ -39,16 +36,15 @@
   	<td> {{ $renstra->realisasi / $renstra->indikator*100 }} % </td>
   	<td> {{ $renstra->uraian }} </td>
   	<td> <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                <a class="btn btn-small btn-info" href="{{ URL::to('renstras/' . $renstra->id . '/edit') }}">Edit Renstra</a>
+          <a class="btn btn-xs btn-warning btn-block" href="{{ URL::to('renstras/' . $renstra->id . '/edit') }}">Edit</a>
   	<!-- <button type="button" class="btn btn-danger btn btn-primary btn-sm btn-block"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> -->
-    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-    <!-- we will add this later since its a little more complicated than the other two buttons -->
-                {{ Form::open(array('url' => 'renstras/' . $renstra->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('hapus', array('class' => 'btn btn-danger')) }}
-                {{ Form::close() }}
+
+    <!-- delete button (uses the destroy method DESTROY /nerds/{id} -->
+          {{ Form::open(array('url' => 'renstras/' . $renstra->id, 'class' => 'pull-right')) }}
+              {{ Form::hidden('_method', 'DELETE') }}
+              {{ Form::submit('Hapus', array('class' => 'btn btn-xs btn-danger btn-block')) }}
+          {{ Form::close() }}
      </td> 
-			
   </tr>
     <?php $i++; ?>
 
@@ -59,7 +55,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal Tambah -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -108,6 +104,7 @@
  -->      </div>
     </div>
   </div>
+
   <script type="text/javascript">
   
 $(document).ready(function() {

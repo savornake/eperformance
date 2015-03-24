@@ -28,3 +28,4 @@ Route::get('logout', array('as' => 'auth.logout', 'uses' => 'AuthenticationContr
 Route::resource('users', 'UsersController');
 
 Route::resource('renstras', 'RenstrasController');
+Route::resource('RKTS', 'RKTsController');

@@ -3,7 +3,7 @@
 class UsersController extends \BaseController {
 
 	function __construct () {
-		$this->beforeFilter('login');
+		// $this->beforeFilter('login');
  
 	}
 
@@ -16,10 +16,8 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		$users = Sentry::findAllUsers();
-
-/*		dd($users);
-*/		
-		return View::make('users.index', array('users'=>$users));
+		return View::make('users.index', array(
+			'users' => $users ));
 	}
 
 	/**
@@ -46,12 +44,15 @@ class UsersController extends \BaseController {
 		{
 		    // Create the user
 		    $user = Sentry::createUser(array(
-		    	'first_name' => Input::get('first_name'),
-		        'email'     => Input::get('email'),
-		        'password'  => Input::get('password'),
-		        'activated' => true,
+		    	'first_name' 	=> Input::get('first_name'),
+		        'email'     	=> Input::get('email'),
+		        'password'  	=> Input::get('password'),
+		        'activated' 	=> true,
 		    ));
-		    return Redirect::to('/users');
+
+		    dd($user);
+
+		    // return Redirect::to('/users');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{

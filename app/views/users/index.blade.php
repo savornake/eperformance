@@ -19,7 +19,7 @@
             <td>ID</td>
             <td>Name</td>
             <td>Email</td>
-            <td>Nerd Level</td>
+            <td>Level User</td>
             <td>Actions</td>
         </tr>
     </thead>
@@ -38,10 +38,10 @@
                 <!-- we will add this later since its a little more complicated than the other two buttons -->
 
                 <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                <a class="btn btn-small btn-success" href="{{ URL::to('users/' . 1) }}">Show this Nerd</a>
+                <a class="btn btn-small btn-success" href="{{ URL::to('users/' . 1) }}">Show User</a>
 
                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                <a class="btn btn-small btn-info" href="{{ URL::to('users/' . 1 . '/edit') }}">Edit this Nerd</a>
+                <a class="btn btn-small btn-info" href="{{ URL::to('users/' . 1 . '/edit') }}">Edit User</a>
 
             </td>
         </tr>

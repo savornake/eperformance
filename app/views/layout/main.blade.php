@@ -5,15 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="sistem informasi e-performance ombudsman RI">
+    <meta name="author" content="Lugas">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>E-Performance</title>
 
     <!-- Bootstrap core CSS -->
     {{HTML::style('css/bootstrap.min.css')}}
+    {{HTML::style('css/font-awesome.min.css')}}
+    {{HTML::style('css/summernote.css')}}
+    {{HTML::style('css/summernote-bs3.css')}}
+
+
+{{HTML::script('js/jquery-2.1.3.min.js')}}
+
+    {{HTML::script('js/bootstrap.min.js')}}
+    {{HTML::script('js/summernote.min.js')}}
     {{HTML::style('css/style.css')}}
+
 
 
      @yield('css')
@@ -44,10 +54,12 @@
           {{HTML::image('img/garuda.png', 'logo', array('class'=> 'logo'))}}E-Performance Ombudsman</a>
           
 
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active">{{HTML::linkRoute('home','Menu Utama')}}</li>
+
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -63,11 +75,14 @@
               </ul>
             </li>
           </ul>
-         <!--  <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul> sementara ngak guna siapa tau kepake --> 
+
+          @if(Sentry::check())
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+            {{Html::linkRoute('auth.logout','Logout')}}
+            </li>
+          </ul>
+          @endif 
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -81,6 +96,10 @@
 
   </body>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    
+    @yield('script')
+
+
   </body>
 </html>

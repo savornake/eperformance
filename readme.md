@@ -2,10 +2,11 @@
 
 ### How to install for developer???
 
+- pertama install xampp
 - Pertama-tama install terlebih dahulu `git`
 - Kemudian install `composer` sebagai php dependency manager
 - Pilih lokasi folder kerja
-- Dan ketikkan kode berikut:
+- Dan ketikkan kode berikut: (otomatis download laravel + code)
 
 ```
 $ git clone https://github.com/savornake/eperformance.git

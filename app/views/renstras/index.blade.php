@@ -15,7 +15,7 @@
 <table class="table table-bordered">
   <tr>
 	<th> No. </th>  
-  	<th>Rencana Strategis</th>
+  	<th>Sasaran Strategis</th>
   	<th>Rencana Kegiatan</th>
   	<th>Indikator Kinerja</th>
   	<th>Realisasi</th>

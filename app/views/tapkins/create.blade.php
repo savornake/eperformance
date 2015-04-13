@@ -2,32 +2,58 @@
 
 @section('content')
 
-<h3>Tambah Sasaran Strategis</h3>
+
+<h3>Tambah Tapkin</h3>
 
 <!-- if there are creation errors, they will show here -->
-{{ HTML::ul($errors->all()) }}
 
-{{ Form::open(array('url' => 'tapkins')) }}
 
     <div class="form-group">
-        {{ Form::textarea('sasaran_strategis', null, array('class' => 'summernote')) }}
+        {{ Form::label('sasaran', 'Sasaran Strategis') }}
+        <select class="form-control" id="sasaran">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        {{ Form::label('indikator', 'Indikator Kinerja') }}
+        <textarea class="form-control" rows="3" id="indikator"></textarea>
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('target', 'Target') }}
+        <textarea class="form-control" rows="1" id="target"></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+        {{ Form::label('waktu', 'Waktu Penyelesaian') }}
+        <select class="form-control" id="target">
+          <option>Triwulan 1</option>
+          <option>Triwulan 2</option>
+          <option>Triwulan 3</option>
+          <option>Triwulan 4</option>
+        </select>    
+    </div>
+    <div class="form-group">
+
+        {{ Form::label('keterangan', 'Keterangan') }}
+        <textarea class="form-control" rows="3" id="keterangan"></textarea>
     </div>
 
 
-    {{ Form::submit('Tambah Sasaran Strategis', array('class' => 'btn btn-primary')) }}
 
-{{ Form::close() }}
+</div>
+    
 
-@stop
 
-@section('script')
-<script type="text/javascript">
-	
-$(document).ready(function() {
-  $('.summernote').summernote({height:70, width:770});
-});
 
-</script>
 
 
 @stop

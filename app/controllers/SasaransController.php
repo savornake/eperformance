@@ -21,7 +21,7 @@ class SasaransController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('sasarans.create');
 	}
 
 	/**

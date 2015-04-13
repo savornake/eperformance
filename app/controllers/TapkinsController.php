@@ -33,7 +33,7 @@ class TapkinsController extends \BaseController {
 	public function store()
 	{
 		$sasaran = new Sasaran;
-		$sasaran->sasaran_strategis=Input::get('sasaran_strategis');
+		$sasaran->sasaran_strategis 	= Input::get('sasaran_strategis');
 		$sasaran->save();
 		return Redirect::to('tapkins');
 	}

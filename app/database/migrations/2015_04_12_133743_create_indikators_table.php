@@ -21,7 +21,6 @@ class CreateIndikatorsTable extends Migration {
 			$table->integer('target');
 			$table->integer('waktu_penyelesaian');
 			$table->text('keterangan');
-			$table->integer('sasaran_id');
 
 		});
 	}

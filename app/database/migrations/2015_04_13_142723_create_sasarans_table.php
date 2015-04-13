@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRKTSTable extends Migration {
+class CreateSasaransTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateRKTSTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('RKTS', function(Blueprint $table)
+		Schema::create('sasarans', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
@@ -27,7 +27,7 @@ class CreateRKTSTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('RKTS');
+		Schema::drop('sasarans');
 	}
 
 }

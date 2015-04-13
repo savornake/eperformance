@@ -34,14 +34,13 @@ class IndikatorsController extends \BaseController {
 	public function store()
 	{
 		$indikator = new Indikator;
-		$indikator->indikator_kinerja=Input::get('indikator_kinerja');
-		$indikator->target=Input::get('target');
-		$indikator->waktu_penyelesaian=Input::get('waktu_penyelesaian');
-		$indikator->keterangan=Input::get('keterangan');
-
-
+		$indikator->indikator_kinerja	= Input::get('indikator_kinerja');
+		$indikator->target 				= Input::get('target');
+		$indikator->waktu_penyelesaian 	= Input::get('waktu_penyelesaian');
+		$indikator->keterangan 			= Input::get('keterangan');
 		$indikator->save();
-		return Redirect::to('tapkins/indikators');
+
+		return Redirect::route('tapkins.indikators');
 	}
 
 	/**

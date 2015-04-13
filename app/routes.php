@@ -12,23 +12,16 @@
 */
 
 Route::get('/', array('as' => 'auth.login', 'uses' => 'AuthenticationController@login'));
-
 Route::get('login', array('as' => 'auth.login', 'uses' => 'AuthenticationController@login'));
 Route::post('login', array('as' => 'auth.login', 'uses' => 'AuthenticationController@postLogin'));
-
-Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationController@register'));
-
-Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
-
-
 Route::get('logout', array('as' => 'auth.logout', 'uses' => 'AuthenticationController@logout'));
-
-
+Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationController@register'));
+Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
 
 Route::resource('users', 'UsersController');
 
 Route::resource('renstras', 'RenstrasController');
 
 Route::resource('tapkins', 'TapkinsController');
-
-Route::resource('tapkins.indikators', 'IndikatorsController');
+Route::resource('sasarans', 'SasaransController');
+Route::resource('sasarans.indikators', 'IndikatorsController');

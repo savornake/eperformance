@@ -1,10 +1,10 @@
 <?php
 
-class RKTsController extends \BaseController {
+class SasaransController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /rkts
+	 * GET /sasarans
 	 *
 	 * @return Response
 	 */
@@ -15,7 +15,7 @@ class RKTsController extends \BaseController {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /rkts/create
+	 * GET /sasarans/create
 	 *
 	 * @return Response
 	 */
@@ -26,7 +26,7 @@ class RKTsController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /rkts
+	 * POST /sasarans
 	 *
 	 * @return Response
 	 */
@@ -37,7 +37,7 @@ class RKTsController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /rkts/{id}
+	 * GET /sasarans/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -49,7 +49,7 @@ class RKTsController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /rkts/{id}/edit
+	 * GET /sasarans/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -61,7 +61,7 @@ class RKTsController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /rkts/{id}
+	 * PUT /sasarans/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -73,7 +73,7 @@ class RKTsController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /rkts/{id}
+	 * DELETE /sasarans/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

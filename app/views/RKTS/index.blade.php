@@ -1,1 +1,0 @@
-C:\xampp\htdocs\eperformance\app/views/RKTS/index.blade.php

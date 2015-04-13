@@ -7,7 +7,7 @@
 		<div class="col-sm-6"><h3><u>Menu Renstra</u></h3></div>
 		<div class="col-sm-6">
 			{{-- HTML::linkRoute('renstras.create','Tambah',[], array('class' => 'btn btn-info pull-right')) --}}
-      <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah Renstra
+      <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah Renstra </button>
 		</div>
 	</div>
 

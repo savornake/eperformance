@@ -10,7 +10,8 @@ class TapkinsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+/*		$tapkins=Tapkin::all();
+*/		return View::make('tapkins.index');
 	}
 
 	/**

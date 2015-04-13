@@ -20,8 +20,8 @@ Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
 
 Route::resource('users', 'UsersController');
 
-Route::resource('renstras', 'RenstrasController');
+Route::resource('rencana-strategis', 'RenstrasController');
 
-Route::resource('tapkins', 'TapkinsController');
-Route::resource('sasarans', 'SasaransController');
-Route::resource('sasarans.indikators', 'IndikatorsController');
+Route::resource('penetapan-kinerja', 'TapkinsController');
+Route::resource('sasaran', 'SasaransController');
+Route::resource('sasaran.indikator', 'IndikatorsController');

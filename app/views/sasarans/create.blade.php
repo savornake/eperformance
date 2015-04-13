@@ -1,58 +1,32 @@
 @extends('layout.main')
 
 @section('content')
+<div class="content">
+	<h3>Tambah Sasaran</h3>
 
-<h3>Tambah Tapkin</h3>
+	{{Form::open(['route' => 'sasaran.store'])}}
 
-<!-- if there are creation errors, they will show here -->
-
-
-    <div class="form-group">
+	<div class="form-group">
     	{{ Form::label('sasaran', 'Sasaran Strategis') }}
-		<select class="form-control" id="sasaran">
-		  <option>1</option>
-		  <option>2</option>
-		  <option>3</option>
-		  <option>4</option>
-		  <option>5</option>
-		</select>
+		{{ Form::text('sasaran', null, ['class' => 'form-control']) }}
 	</div>
 
 	<div class="form-group">
+    	{{ Form::label('sasaran_desc', 'Deskripsi Sasaran') }}
+		{{ Form::textarea('sasaran_desc', null, ['class' => 'form-control summernote'])}}
+	</div>    
 
-		{{ Form::label('indikator', 'Indikator Kinerja') }}
-		<textarea class="form-control" rows="3" id="indikator"></textarea>
-	</div>
+    {{ Form::submit('Simpan', array('class' => 'btn btn-primary')) }}
 
-	<div class="form-group">
-		{{ Form::label('target', 'Target') }}
-		<textarea class="form-control" rows="1" id="target"></textarea>
-
-	</div>
-
-	<div class="form-group">
-
-		{{ Form::label('waktu', 'Waktu Penyelesaian') }}
-		<select class="form-control" id="target">
-		  <option>Triwulan 1</option>
-		  <option>Triwulan 2</option>
-		  <option>Triwulan 3</option>
-		  <option>Triwulan 4</option>
-		</select>	
-	</div>
-	<div class="form-group">
-
-		{{ Form::label('keterangan', 'Keterangan') }}
-		<textarea class="form-control" rows="3" id="keterangan"></textarea>
-	</div>
-
-
-
+	{{Form::close()}}
 </div>
-    
+@stop
 
 
-
-
-
+@section('script')
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.summernote').summernote({height:70, width:770});
+});
+</script>
 @stop

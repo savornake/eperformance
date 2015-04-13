@@ -16,7 +16,8 @@ class CreateSasaranTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id');
-			$table->text('sasaran_strategis');
+			$table->char('sasaran');
+			$table->text('deskripsi');
 			$table->timestamps();
 		});
 	}

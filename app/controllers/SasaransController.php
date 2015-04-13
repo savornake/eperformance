@@ -10,7 +10,9 @@ class SasaransController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$sasarans = Sasaran::all();
+		return View::make('sasarans.index')
+			->with('sasarans', $sasarans);
 	}
 
 	/**
@@ -32,7 +34,14 @@ class SasaransController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$sasaran = new Sasaran;
+
+		$sasaran->sasaran = Input::get('sasaran');
+		$sasaran->deskripsi = Input::get('sasaran_desc');
+
+		if ($sasaran->save()) {
+			return Redirect::route('sasaran.index');
+		}
 	}
 
 	/**
@@ -44,7 +53,9 @@ class SasaransController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$sasaran = Sasaran::find($id);
+		return View::make('sasarans.show')
+			->with('sasaran', $sasaran);
 	}
 
 	/**
@@ -56,7 +67,9 @@ class SasaransController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$sasaran = Sasaran::find($id);
+		return View::make('sasarans.edit')
+			->with('sasaran', $sasaran);
 	}
 
 	/**
@@ -68,7 +81,14 @@ class SasaransController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$sasaran = Sasaran::find($id);
+
+		$sasaran->sasaran = Input::get('sasaran');
+		$sasaran->deskripsi = Input::get('sasaran_desc');
+
+		if ($sasaran->save()) {
+			return Redirect::route('sasaran.index');
+		}
 	}
 
 	/**
@@ -80,7 +100,9 @@ class SasaransController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$sasaran = Sasaran::find($id);
+		$sasaran->delete();
+		return Redirect::route('sasaran.index');
 	}
 
 }

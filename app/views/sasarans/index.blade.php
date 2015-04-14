@@ -2,6 +2,10 @@
 
 @section('content')
 
+
+     <h3>Tambah Sasaran Kinerja</h3>
+
+
 <div class="content">
 	{{HTML::linkRoute('sasaran.create', 'Add', [], ['class' => 'btn btn-primary'])}}
 	<table class="table table-condensed table-striped">

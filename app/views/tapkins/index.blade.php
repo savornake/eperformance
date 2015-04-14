@@ -22,7 +22,7 @@
 
          <div class="form-group">
         {{ Form::label('sasaran', 'Sasaran Strategis') }}
-        {{ Form::select('sasaran_id', $sasaran) }}
+        {{ Form::select('sasaran_id', $list_sasaran) }}
 
     </div>
 
@@ -78,7 +78,7 @@
   </tr>
 
 
-  <tr>
+{{--   <tr>
     <td> 1</td>
     <td> tes sasaran strategis</td>
     <td>  1</td>
@@ -88,14 +88,26 @@
     <td> tes keterangan</td>
 </tr>
 
-  <tr>
-    <td colspan="2"> </td>
-    <td>  2</td>
-    <td> tes indikator kinerja</td>
-    <td> 80% </td>
-    <td> triwulan 1 </td>
-    <td> tes keterangan</td>
-</tr>
+<tr>
+  <td colspan="2"> </td>
+  <td>  2</td>
+  <td> tes indikator kinerja</td>
+  <td> 80% </td>
+  <td> triwulan 1 </td>
+  <td> tes keterangan</td>
+</tr> --}}
+
+  @foreach($sasaran as $item)
+  
+    <tr>
+      <td colspan="2"> </td>
+      <td> {{$item->sasaran}}</td>
+     {{--  <td> tes indikator kinerja</td>
+      <td> 80% </td>
+      <td> triwulan 1 </td>
+      <td> tes keterangan</td> --}}
+    </tr>
+  @endforeach
 </table>
 </div>
   @stop

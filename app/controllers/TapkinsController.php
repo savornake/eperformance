@@ -11,24 +11,17 @@ class TapkinsController extends \BaseController {
 	public function index()
 	{
 /*		$tapkins=Tapkin::all();*/
+		$sasaranAll = Sasaran::all();
+
 		$sasaran = Sasaran::all()->toArray();
-
-		$newSasaran = [];
+		$listSasaran = [];
 		foreach ($sasaran as $item) {
-			$newSasaran[$item['id']] = $item['sasaran'];
+			$listSasaran[$item['id']] = $item['sasaran'];
 		}
-		/*
-		array(
-			4 => sasaran,
-			4 => sasaran,
-			4 => sasaran,
-			4 => sasaran,
-
-		)
-		*/
 
 		return View::make('tapkins.index')
-			->with('sasaran', $newSasaran);
+			->with('list_sasaran', $listSasaran)
+			->with('sasaran', $sasaranAll);
 	}
 
 	/**

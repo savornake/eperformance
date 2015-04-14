@@ -10,8 +10,25 @@ class TapkinsController extends \BaseController {
 	 */
 	public function index()
 	{
-/*		$tapkins=Tapkin::all();
-*/		return View::make('tapkins.index');
+/*		$tapkins=Tapkin::all();*/
+		$sasaran = Sasaran::all()->toArray();
+
+		$newSasaran = [];
+		foreach ($sasaran as $item) {
+			$newSasaran[$item['id']] = $item['sasaran'];
+		}
+		/*
+		array(
+			4 => sasaran,
+			4 => sasaran,
+			4 => sasaran,
+			4 => sasaran,
+
+		)
+		*/
+
+		return View::make('tapkins.index')
+			->with('sasaran', $newSasaran);
 	}
 
 	/**
@@ -33,11 +50,18 @@ class TapkinsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$sasaran = new Sasaran;
-		$sasaran->sasaran_strategis 	= Input::get('sasaran_strategis');
-		$sasaran->save();
-		return Redirect::to('tapkins');
-	}
+		$indikator = new Indikator;
+		$indikator->sasaran_id = Input::get('sasaran_id');
+		$indikator->indikator_kinerja = Input::get('indikator_kinerja');
+		$indikator->target = Input::get('target');
+		$indikator->waktu_penyelesaian = Input::get('waktu_penyelesaian');
+		$indikator->keterangan = Input::get('keterangan');
+
+
+
+		$indikator->save();
+/*		return Redirect::to('tapkins');
+*/	}
 
 	/**
 	 * Display the specified resource.

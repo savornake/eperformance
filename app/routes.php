@@ -20,7 +20,7 @@ Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
 
 Route::resource('users', 'UsersController');
 
-Route::resource('rencana-strategis', 'RenstrasController');
+Route::resource('renstras', 'RenstrasController');
 
 Route::resource('penetapan-kinerja', 'TapkinsController');
 Route::resource('sasaran', 'SasaransController');

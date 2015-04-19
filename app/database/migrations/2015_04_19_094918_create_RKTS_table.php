@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIndikatorsTable extends Migration {
+class CreateRKTSTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,13 @@ class CreateIndikatorsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('indikators', function(Blueprint $table)
+		Schema::create('RKTS', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('sasaran_id');
-			$table->text('indikator_kinerja');
-			$table->integer('target');
-			$table->integer('waktu_penyelesaian');
-			$table->text('keterangan');
-			$table->timestamps();
 
+			$table->increments('id');
+			$table->integer('user_id');
+			$table->char('sasaran');
+			$table->timestamps();
 		});
 	}
 
@@ -33,7 +30,7 @@ class CreateIndikatorsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('indikators');
+		Schema::drop('RKTS');
 	}
 
 }

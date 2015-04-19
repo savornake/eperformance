@@ -10,8 +10,14 @@ class TapkinsController extends \BaseController {
 	 */
 	public function index()
 	{
-/*		$tapkins=Tapkin::all();*/
-		$sasaranAll = Sasaran::all();
+		$sasarans = Sasaran::with('indikator')->take(10)->get();
+
+		foreach ($sasarans as $sasaran) {
+
+			foreach ($sasaran->indikator as $indikator) {
+			//	dd($indikator->waktu_penyelesaian);
+			}
+		}
 
 		$sasaran = Sasaran::all()->toArray();
 		$listSasaran = [];
@@ -21,7 +27,13 @@ class TapkinsController extends \BaseController {
 
 		return View::make('tapkins.index')
 			->with('list_sasaran', $listSasaran)
-			->with('sasaran', $sasaranAll);
+			->with('sasarans', $sasarans);
+
+	/*	
+
+		return View::make('tapkins.index')
+			->with('list_sasaran', $listSasaran)
+			->with('sasaran', $sasaranAll);*/
 	}
 
 	/**
@@ -53,8 +65,9 @@ class TapkinsController extends \BaseController {
 
 
 		$indikator->save();
-/*		return Redirect::to('tapkins');
-*/	}
+
+		return Redirect::route('penetapan-kinerja.index');
+	}
 
 	/**
 	 * Display the specified resource.
@@ -77,8 +90,12 @@ class TapkinsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$indikator = indikator::find($id);
+		return View::make('Indikator.edit')
+			->with('indikator', $indikator);
 	}
+
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -89,9 +106,19 @@ class TapkinsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-	}
+		$indikator = Indikator::find($id);
 
+		$indikator->sasaran_id = Input::get('sasaran_id');
+		$indikator->indikator_kinerja = Input::get('indikator_kinerja');
+		$indikator->target = Input::get('target');
+		$indikator->waktu_penyelesaian = Input::get('waktu_penyelesaian');
+		$indikator->keterangan = Input::get('keterangan');
+
+		if ($indikator->save()) {
+			return Redirect::route('penetapan-kinerja.index');
+
+	}
+}
 	/**
 	 * Remove the specified resource from storage.
 	 * DELETE /tapkins/{id}
@@ -101,7 +128,7 @@ class TapkinsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		
 	}
 
 }

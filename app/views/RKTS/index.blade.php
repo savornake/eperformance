@@ -1,11 +1,9 @@
 @extends('layout.main')
 
 @section('content')
+
 <div class="content">
-
-	<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah Tapkin </button>
-
-
+<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah RKT </button>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -41,17 +39,7 @@
 							4 => 'Triwulan 4',
 
 						)) }}
-						{{-- <select class="form-control" id="waktu" name="waktu_penyelesaian">
-							<option>Triwulan 1</option>
-							<option>Triwulan 2</option>
-							<option>Triwulan 3</option>
-							<option>Triwulan 4</option>
-						</select>    --}} 
-					</div>
-
-					<div class="form-group">
-						{{ Form::label('keterangan', 'Keterangan') }}
-						<textarea class="form-control" rows="3" id="keterangan" name="keterangan"></textarea>
+						
 					</div>
 
 					{{ Form::submit('Simpan', array('class' => 'btn btn-primary')) }}
@@ -61,50 +49,36 @@
 		</div>
 	</div>
 
-	<div class="row">
+
+
+
+	<div class="content">
 		<div class="col-sm-12">
 			<table class="table table-striped">
 
 				<thead>
 					<tr>
-						<th>Sasaran Strategis</th>
+						<th >Sasaran Strategis</th>
 						<th>Indikator Kinerja</th>
-						<th>Target</th>
-						<th>Waktu Penyelesaian</th>
-						<th>Keterangan</th>
+						<th colspan="2">Target Kinerja</th>
 						<th>Edit</th>
 					</tr>
 				</thead>
 
-				<tbody>
-				@foreach($sasarans as $sasaran)
-
-					@if(count($sasaran->indikator) >= 1)
 					<tr>
-						<td rowspan="{{count($sasaran->indikator)}}">{{$sasaran->sasaran}}</td>
-						<td>{{$sasaran->indikator[0]->indikator_kinerja}}</td>
-						<td>{{$sasaran->indikator[0]->target}}</td>
-						<td>Triwulan {{$sasaran->indikator[0]->waktu_penyelesaian}}</td>
-						<td>{{$sasaran->indikator[0]->keterangan}}</td>
-						<td>{{ HTML::linkRoute('penetapan-kinerja.edit', 'Edit') }}</td>
-					</tr>
-					@endif
+						<td>tes sasaran</td>
+						<td>tes indikator</td>
+						<td>80%</td>
+						<td>triwulan 1</td>
+						<td>edit</td>	
 
-					@for($i=1; $i < count($sasaran->indikator); $i++)   
-					<tr>
-						<td>{{$sasaran->indikator[$i]->indikator_kinerja}}</td>
-						<td>{{$sasaran->indikator[$i]->target}}</td>
-						<td>Triwulan {{$sasaran->indikator[$i]->waktu_penyelesaian}}</td>
-						<td>{{$sasaran->indikator[$i]->keterangan}}</td>
-						<td>{{ HTML::linkRoute('penetapan-kinerja.edit', 'Edit') }}</td>
-
-					</tr>
-					@endfor
-
-				@endforeach
+<tbody>
+				
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
+
+
 @stop

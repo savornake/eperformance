@@ -16,6 +16,8 @@
     {{HTML::style('css/font-awesome.min.css')}}
     {{HTML::style('css/summernote.css')}}
     {{HTML::style('css/summernote-bs3.css')}}
+        {{HTML::style('css/main.css')}}
+
 
 
 {{HTML::script('js/jquery-2.1.3.min.js')}}

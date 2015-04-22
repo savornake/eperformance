@@ -26,3 +26,4 @@ Route::resource('penetapan-kinerja', 'TapkinsController');
 Route::resource('sasaran', 'SasaransController');
 Route::resource('sasaran.indikator', 'IndikatorsController');
 Route::resource('RKTS', 'RKTsController');
+Route::resource('capaian-tapkins', 'CapaianTapkinsController');

@@ -8,27 +8,29 @@
 {{ Form::model($renstra, array('route' => array('renstras.update', $renstra->id), 'method' => 'PUT')) }}
 
    <div class="form-group">
-        {{ Form::textarea('rencana_strategis', null, array('class' => 'summernote')) }}
+         {{ Form::label('tujuan', 'Tujuan') }}
+        {{ Form::textarea('tujuan', null, array('class' => 'summernote')) }}
     </div>
 
     <div class="form-group">
-        {{ Form::textarea('rencana_kegiatan', null, array('class' => 'summernote')) }}
+        {{ Form::label('sasaran_strategis', 'Sasaran Strategis') }}
+        {{ Form::textarea('sasaran_strategis', null, array('class' => 'summernote')) }}
     </div>
 
      <div class="form-group">
         {{ Form::label('indikator', 'Indikator') }}
-        {{ Form::text('indikator', null, array('class' => 'form-control')) }}
+        {{ Form::textarea('indikator', null, array('class' => 'summernote')) }}
     </div>
 
      <div class="form-groups">
-        {{ Form::label('realisasi', 'Realisasi') }}
-        {{ Form::text('realisasi', null, array('class' => 'form-control')) }}
+        {{ Form::label('program_kegiatan', 'Program Kegiatan') }}
+        {{ Form::textarea('program_kegiatan', null, array('class' => 'summernote')) }}
     </div>
 
     <div class="form-group">
-        {{ Form::label('uraian', 'Uraian') }}
+        {{ Form::label('sub_kegiatan', 'Sub Kegiatan') }}
         <!-- <div class="summernote"></div> -->
-        {{ Form::textarea('uraian', null, array('class' => 'summernote')) }}
+        {{ Form::textarea('sub_kegiatan', null, array('class' => 'summernote')) }}
      </div>
 
     {{ Form::submit('Edit Renstra!', array('class' => 'btn btn-primary')) }}
@@ -45,6 +47,4 @@ $(document).ready(function() {
 });
 
 </script>
-
-
 @stop

@@ -9,11 +9,11 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Tambah Tapkin</h4>
+					<h4 class="modal-title" id="myModalLabel">Tambah RKT</h4>
 				</div>
 
 				<div class="modal-body">
-					{{ Form::open(array('route' => 'penetapan-kinerja.store')) }}
+					{{ Form::open(array('route' => 'RKTS.store')) }}
 
 					<div class="form-group">
 						{{ Form::label('sasaran', 'Sasaran Strategis') }}
@@ -37,9 +37,13 @@
 							2 => 'Triwulan 2',
 							3 => 'Triwulan 3',
 							4 => 'Triwulan 4',
-
 						)) }}
 						
+					</div>
+
+					<div class="form-group">
+						{{ Form::label('keterangan', 'Keterangan') }}
+						<textarea class="form-control" rows="3" id="keterangan" name="keterangan"></textarea>
 					</div>
 
 					{{ Form::submit('Simpan', array('class' => 'btn btn-primary')) }}

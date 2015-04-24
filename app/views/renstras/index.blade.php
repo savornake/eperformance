@@ -2,10 +2,15 @@
 
 @section('content')
 
+<h3 align="center"> Rencana Strategis </h3>
+
 <div class="content">
 	<div class="row title">
-		<div class="col-sm-6"><h3><u>Menu Renstra</u></h3></div>
-		<div class="col-sm-6">
+
+		<!--<div class="col-sm-6"><h3><u>Rencana Strategis</u></h3></div> -->
+
+
+		<div class="col-sm-12">
 			{{-- HTML::linkRoute('renstras.create','Tambah',[], array('class' => 'btn btn-info pull-right')) --}}
       <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah Renstra </button>
 		</div>
@@ -14,13 +19,12 @@
 
 <table class="table table-bordered">
   <tr>
-	<th> No. </th>
+    <th> No. </th>
+    <th>Tujuan</th>
   	<th>Sasaran Strategis</th>
-  	<th>Rencana Kegiatan</th>
   	<th>Indikator Kinerja</th>
-  	<th>Realisasi</th>
-  	<th>Presentase</th>
-  	<th>Uraian Realisasi</th>
+  	<th>Program Kegiatan</th>
+  	<th>Sub Kegiatan</th>
   	<th>Edit</th>
   </tr>
 
@@ -29,12 +33,12 @@
 
   <tr>
   	<td> {{$i}}</td>
-  	<td> {{ $renstra->rencana_strategis }}</td>
-  	<td> {{ $renstra->rencana_kegiatan }} </td>
+  	<td> {{ $renstra->tujuan }}</td>
+  	<td> {{ $renstra->sasaran_strategis }} </td>
   	<td> {{ $renstra->indikator }} </td>
-  	<td> {{ $renstra->realisasi }} </td>
-  	<td> {{ $renstra->realisasi / $renstra->indikator*100 }} % </td>
-  	<td> {{ $renstra->uraian }} </td>
+  	<td> {{ $renstra->program_kegiatan }} </td>
+  	<td> {{ $renstra->sub_kegiatan }}</td>
+
   	<td> <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
           <a class="btn btn-xs btn-warning btn-block" href="{{ URL::to('renstras/' . $renstra->id . '/edit') }}">Edit</a>
   	<!-- <button type="button" class="btn btn-danger btn btn-primary btn-sm btn-block"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> -->
@@ -67,29 +71,29 @@
         {{ Form::open(array('url' => 'renstras')) }}
 
     <div class="form-group">
-        {{ Form::label('rencana_strategis', 'Rencana Strategis') }}
-        {{ Form::textarea('rencana_strategis', null, array('class' => 'summernote')) }}
+        {{ Form::label('tujuan', 'Tujuan') }}
+        {{ Form::textarea('tujuan', null, array('class' => 'summernote')) }}
     </div>
 
     <div class="form-group">
-        {{ Form::label('rencana_kegiatan', 'Rencana Kegiatan') }}
-        {{ Form::textarea('rencana_kegiatan', null, array('class' => 'summernote')) }}
+        {{ Form::label('sasaran_strategis', 'Sasaran Strategis') }}
+        {{ Form::textarea('sasaran_strategis', null, array('class' => 'summernote')) }}
     </div>
 
      <div class="form-group">
         {{ Form::label('indikator', 'Indikator') }}
-        {{ Form::text('indikator', null, array('class' => 'form-control')) }}
+        {{ Form::textarea('indikator', null, array('class' => 'summernote')) }}
     </div>
 
      <div class="form-groups">
-        {{ Form::label('realisasi', 'Realisasi') }}
-        {{ Form::text('realisasi', null, array('class' => 'form-control')) }}
+        {{ Form::label('program_kegiatan', 'Program Kegiatan') }}
+        {{ Form::textarea('program_kegiatan', null, array('class' => 'summernote')) }}
     </div>
 
     <div class="form-group">
-        {{ Form::label('uraian', 'Uraian') }}
+        {{ Form::label('sub_kegiatan', 'Sub Kegiatan') }}
         <!-- <div class="summernote"></div> -->
-        {{ Form::textarea('uraian', null, array('class' => 'summernote')) }}
+        {{ Form::textarea('sub_kegiatan', null, array('class' => 'summernote')) }}
      </div>
 
     

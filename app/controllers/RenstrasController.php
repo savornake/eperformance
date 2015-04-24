@@ -36,11 +36,11 @@ class RenstrasController extends \BaseController {
 	{
 		// dd(Input::all());
 		$renstra = new Renstra;
-		$renstra->rencana_strategis=Input::get('rencana_strategis');
-		$renstra->rencana_kegiatan=Input::get('rencana_kegiatan');
+		$renstra->tujuan=Input::get('tujuan');
+		$renstra->sasaran_strategis=Input::get('sasaran_strategis');
 		$renstra->indikator=Input::get('indikator');
-		$renstra->realisasi=Input::get('realisasi');
-		$renstra->uraian=Input::get('uraian');
+		$renstra->program_kegiatan=Input::get('program_kegiatan');
+		$renstra->sub_kegiatan=Input::get('sub_kegiatan');
 		$renstra->save();
 		return Redirect::to('renstras');
 	}
@@ -85,11 +85,11 @@ class RenstrasController extends \BaseController {
 		
             // store
             $renstra = Renstra::find($id);
-            $renstra->rencana_strategis=Input::get('rencana_strategis');
-			$renstra->rencana_kegiatan=Input::get('rencana_kegiatan');
+            $renstra->tujuan=Input::get('tujuan');
+			$renstra->sasaran_strategis=Input::get('sasaran_strategis');
 			$renstra->indikator=Input::get('indikator');
-			$renstra->realisasi=Input::get('realisasi');
-			$renstra->uraian=Input::get('uraian');
+			$renstra->program_kegiatan=Input::get('program_kegiatan');
+			$renstra->sub_kegiatan=Input::get('sub_kegiatan');
 			$renstra->save();
 
             // redirect

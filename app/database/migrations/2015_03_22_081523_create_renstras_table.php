@@ -15,13 +15,11 @@ class CreateRenstrasTable extends Migration {
 		Schema::create('renstras', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id');
-			$table->text('rencana_strategis');
-			$table->text('rencana_kegiatan');
-			$table->integer('indikator');
-			$table->integer('realisasi');
-			$table->text('uraian');
-
+			$table->text('tujuan');
+			$table->text('sasaran_strategis');
+			$table->text('indikator');
+			$table->text('program_kegiatan');
+			$table->text('sub_kegiatan');
 			$table->timestamps();
 		});
 	}

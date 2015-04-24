@@ -1,7 +1,12 @@
 @extends('layout.main')
 
 @section('content')
+
+<h3 align="center"> Penetapan Kinerja </h3>
+
 <div class="content">
+
+<a class="btn btn-primary btn-sm" {{HTML::linkRoute('sasaran.index','Tambah Sasaran Strategis')}} </a>
 
 	<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal"> Tambah Tapkin </button>
 

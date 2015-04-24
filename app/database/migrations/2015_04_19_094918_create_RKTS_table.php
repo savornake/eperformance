@@ -18,6 +18,8 @@ class CreateRKTSTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->char('sasaran');
+			$table->text('keterangan');
+
 			$table->timestamps();
 		});
 	}

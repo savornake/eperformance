@@ -52,14 +52,16 @@ class RKTsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Rkt::$rules);
+		$indikator = new Indikator;
+		$indikator->sasaran_id = Input::get('sasaran_id');
+		$indikator->indikator_kinerja = Input::get('indikator_kinerja');
+		$indikator->target = Input::get('target');
+		$indikator->waktu_penyelesaian = Input::get('waktu_penyelesaian');
+		$indikator->keterangan = Input::get('keterangan');
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
 
-		Rkt::create($data);
+
+		$indikator->save();
 
 		return Redirect::route('rkts.index');
 	}

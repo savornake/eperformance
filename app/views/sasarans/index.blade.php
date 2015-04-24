@@ -3,11 +3,15 @@
 @section('content')
 
 
-     <h3>Tambah Sasaran Kinerja</h3>
+     <h3 align="center">Tambah Sasaran Kinerja</h3>
+
+
 
 
 <div class="content">
-	{{HTML::linkRoute('sasaran.create', 'Add', [], ['class' => 'btn btn-primary'])}}
+
+    <a class="btn btn-primary btn-sm" {{HTML::linkRoute('penetapan-kinerja.index','Kembali ke Menu Tapkin')}} </a>
+	{{HTML::linkRoute('sasaran.create', 'Add', [], ['class' => 'btn btn-primary pull-right'])}}
 	<table class="table table-condensed table-striped">
 		<tr>
 			<th>Sasaran</th>

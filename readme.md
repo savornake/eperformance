@@ -24,6 +24,7 @@ $ php artisan serve
 ### Enaknya pake software apa aja buat develop???
 
 Software banyak sekali yang gratis atau berbayar, jika ingin yang gratis saya merekomendasikan:
+
 1. Sublime Text 3: code editor
 2. Sourcetree: git management
 3. MySQL Workbench: MySQL desktop GUI

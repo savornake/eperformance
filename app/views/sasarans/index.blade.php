@@ -10,7 +10,7 @@
 
 <div class="content">
 
-    <a class="btn btn-primary btn-sm" {{HTML::linkRoute('penetapan-kinerja.index','Kembali ke Menu Tapkin')}} </a>
+    <!-- <a class="btn btn-primary btn-sm" {{HTML::linkRoute('penetapan-kinerja.index','Kembali ke Menu Tapkin')}} </a> -->
 	{{HTML::linkRoute('sasaran.create', 'Add', [], ['class' => 'btn btn-primary pull-right'])}}
 	<table class="table table-condensed table-striped">
 		<tr>

@@ -1,5 +1,5 @@
 
-@extends('layout/main')
+@extends('layout.main')
 @section('content')
 
 
@@ -31,7 +31,7 @@
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
           <h3>Rencana Kegiatan Tahunan</h3>
           <p>Penjelasan Menu</p>
-          <p><a class="btn btn-default" {{HTML::linkRoute('RKTS.index','Detail RKT')}} </a></p>
+          <p><a class="btn btn-default" {{HTML::linkRoute('rkt.index','Detail RKT')}} </a></p>
         </div><!-- /.col-lg-4 -->
 
          <div class="col-md-4">

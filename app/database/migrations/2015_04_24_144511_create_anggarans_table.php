@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateSasaranTable extends Migration {
+class CreateAnggaransTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,13 @@ class CreateSasaranTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sasaran', function(Blueprint $table)
+		Schema::create('anggarans', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id');
-			$table->char('sasaran');
-			$table->text('deskripsi');
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -29,7 +27,7 @@ class CreateSasaranTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sasaran');
+		Schema::drop('anggarans');
 	}
 
 }

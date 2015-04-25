@@ -16,20 +16,15 @@
     {{HTML::style('css/font-awesome.min.css')}}
     {{HTML::style('css/summernote.css')}}
     {{HTML::style('css/summernote-bs3.css')}}
-        {{HTML::style('css/main.css')}}
-
-
-
-{{HTML::script('js/jquery-2.1.3.min.js')}}
-
+    {{-- HTML::style('css/main.css') --}}
+    {{HTML::style('css/style.css')}}
+    
+    {{HTML::script('js/jquery-2.1.3.min.js')}}
     {{HTML::script('js/bootstrap.min.js')}}
     {{HTML::script('js/summernote.min.js')}}
-    {{HTML::style('css/style.css')}}
-
-
-
-     @yield('css')
-
+    
+    @yield('styles')
+    @yield('style')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -37,8 +32,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
-   
 
   <body>
 
@@ -54,28 +47,15 @@
           </button>
           <a class="navbar-brand" href="{{ URL::to('/') }}">
           {{HTML::image('img/garuda.png', 'logo', array('class'=> 'logo'))}}E-Performance Ombudsman</a>
-          
-
-
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active">{{HTML::linkRoute('home','Menu Utama')}}</li>
+            <li>{{ HTML::linkRoute('sasaran.index', 'Sasaran') }}</li>
+            <li>{{ HTML::linkRoute('rkt.index', 'RKT') }}</li>
 
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul> -->
-            </li>
+            <!-- <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li> -->
           </ul>
 
           @if(Sentry::check())
@@ -90,18 +70,11 @@
     </nav>
 
     <div class="container">
-      
-  
-  <!-- Disisi apa aja-->
-     @yield('content')
+      @yield('content')
     </div>
 
-  </body>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    
-    
+    @yield('scripts')
     @yield('script')
-
 
   </body>
 </html>

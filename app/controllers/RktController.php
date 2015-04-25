@@ -1,6 +1,8 @@
 <?php
 
-class RKTsController extends \BaseController {
+use Akung\Repositories\Listing;
+
+class RktController extends \BaseController {
 
 	/**
 	 * Display a listing of rkts
@@ -9,28 +11,11 @@ class RKTsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$rkts = RKT::all();
-
-/*		return View::make('rkts.index', compact('rkts'));
-*/
-
 		$sasarans = Sasaran::with('indikator')->take(10)->get();
 
-		foreach ($sasarans as $sasaran) {
-
-			foreach ($sasaran->indikator as $indikator) {
-			//	dd($indikator->waktu_penyelesaian);
-			}
-		}
-
-		$sasaran = Sasaran::all()->toArray();
-		$listSasaran = [];
-		foreach ($sasaran as $item) {
-			$listSasaran[$item['id']] = $item['sasaran'];
-		}
-
 		return View::make('rkts.index')
-			->with('list_sasaran', $listSasaran)
+			->with('list_sasaran', Listing::sasaran())
+			->with('list_biro', Listing::biro())
 			->with('sasarans', $sasarans);
 
 	}

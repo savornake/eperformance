@@ -13,6 +13,9 @@
 		"fzaninotto/faker": "1.5.*@dev"
 	},
 	"autoload": {
+		"psr-0": {
+            "Akung": "app/"
+        },
 		"classmap": [
 			"app/commands",
 			"app/controllers",

@@ -1,7 +1,5 @@
 <?php
 
-use Akung\Repositories\Listing;
-
 class RktController extends \BaseController {
 
 	/**
@@ -11,13 +9,9 @@ class RktController extends \BaseController {
 	 */
 	public function index()
 	{
-		$sasarans = Sasaran::with('indikator')->take(10)->get();
+		$rkts = Rkt::all();
 
-		return View::make('rkts.index')
-			->with('list_sasaran', Listing::sasaran())
-			->with('list_biro', Listing::biro())
-			->with('sasarans', $sasarans);
-
+		return View::make('rkts.index', compact('rkts'));
 	}
 
 	/**
@@ -37,16 +31,14 @@ class RktController extends \BaseController {
 	 */
 	public function store()
 	{
-		$indikator = new Indikator;
-		$indikator->sasaran_id = Input::get('sasaran_id');
-		$indikator->indikator_kinerja = Input::get('indikator_kinerja');
-		$indikator->target = Input::get('target');
-		$indikator->waktu_penyelesaian = Input::get('waktu_penyelesaian');
-		$indikator->keterangan = Input::get('keterangan');
+		$validator = Validator::make($data = Input::all(), Rkt::$rules);
 
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 
-
-		$indikator->save();
+		Rkt::create($data);
 
 		return Redirect::route('rkts.index');
 	}

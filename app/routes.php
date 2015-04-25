@@ -19,15 +19,22 @@ Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationC
 Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
 
 Route::resource('users', 'UsersController');
-
-Route::resource('sasaran', 'SasaransController');
-Route::resource('biros', 'BirosController');
-
-Route::resource('renstras', 'RenstrasController');
-Route::resource('penetapan-kinerja', 'TapkinsController');
+Route::resource('biro', 'BiroController');
+Route::resource('renstra', 'RenstraController');
+Route::resource('tapkin', 'TapkinController');
 Route::resource('rkt', 'RktController');
+Route::resource('indikator', 'IndikatorController');
+Route::resource('realisasi', 'RealisasiController');
+Route::resource('anggaran', 'AnggaranController');
+Route::resource('rincian', 'RincianController');
+Route::resource('subkegiatan', 'SubkegiatanController');
+
+/*
+Route::resource('sasaran', 'SasaransController');
+
+Route::resource('penetapan-kinerja', 'TapkinsController');
 Route::resource('capaian', 'CapaiansController');
-Route::resource('anggaran', 'AnggaransController');
+Route::resource('anggaran', 'AnggaransController');*/
 
 // Route::resource('sasaran.indikator', 'IndikatorsController');
 //Route::resource('RKTS', 'RKTsController');

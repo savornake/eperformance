@@ -7,27 +7,24 @@ class BirosTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
 		Biro::create([
-			'name'	=> 'Biro Umum'
+			'nama'	=> 'Bidang Pencegahan',
 		]);
 
 		Biro::create([
-			'name'			=> 'Biro PPK',
-			'description'	=> 'Biro Perencanaan Pengawasan dan Keuangan'
+			'nama'	=> 'Bidang Penanganan Laporan',
 		]);
 
 		Biro::create([
-			'name'			=> 'Biro ASIL',
+			'nama'	=> 'Biro UMUM',
 		]);
 
 		Biro::create([
-			'name'	=> 'Bidang Pencegahan'
+			'nama'	=> 'Biro PPK',
 		]);
 
 		Biro::create([
-			'name'	=> 'Bidang Penanganan Laporan'
+			'nama'	=> 'Biro ASIL',
 		]);
 	}
 

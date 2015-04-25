@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCapaianTapkinsTable extends Migration {
+class CreateIndikatorsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,16 @@ class CreateCapaianTapkinsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('capaian-tapkins', function(Blueprint $table)
+		Schema::create('indikator', function(Blueprint $table)
 		{
-			$table->integer('sasaran_id');
+			$table->increments('id');
+			$table->integer('parent_id');
+			$table->char('tipe', 100);
 			$table->text('indikator_kinerja');
 			$table->integer('target');
-			$table->integer('waktu_penyelesaian');
+			$table->enum('waktu', [1,2,3,4]);  // triwulan
+			$table->text('kegiatan');
 			$table->text('keterangan');
-			$table->increments('id');
 			$table->timestamps();
 		});
 	}
@@ -32,7 +34,7 @@ class CreateCapaianTapkinsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('capaian-tapkins');
+		Schema::drop('indikator');
 	}
 
 }

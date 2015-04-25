@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRenstrasTable extends Migration {
+class CreateSubkegiatansTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,12 @@ class CreateRenstrasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('renstras', function(Blueprint $table)
+		Schema::create('subkegiatan', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('tujuan');
-			$table->text('sasaran_strategis');
-			$table->text('indikator');
-			$table->text('program_kegiatan');
-			$table->text('sub_kegiatan');
+			$table->integer('indikator_id');
+			$table->char('nama_kegiatan');
+			$table->text('keterangan');
 			$table->timestamps();
 		});
 	}
@@ -32,7 +30,7 @@ class CreateRenstrasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('renstras');
+		Schema::drop('subkegiatan');
 	}
 
 }

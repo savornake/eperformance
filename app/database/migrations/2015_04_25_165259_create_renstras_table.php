@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBirosTable extends Migration {
+class CreateRenstrasTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,13 @@ class CreateBirosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('biros', function(Blueprint $table)
+		Schema::create('renstra', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->char('name');
-			$table->text('description');
+			$table->text('sasaran');
+			$table->text('tujuan');
+			$table->text('indikator');
+			$table->text('kegiatan');
 			$table->timestamps();
 		});
 	}
@@ -29,7 +31,7 @@ class CreateBirosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('biros');
+		Schema::drop('renstra');
 	}
 
 }

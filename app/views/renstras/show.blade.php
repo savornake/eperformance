@@ -1,4 +1,1 @@
-@extends('layout.main')
-
-@section('content')
-
+X:\Code\laravel\eperformance\app/views/renstras/show.blade.php

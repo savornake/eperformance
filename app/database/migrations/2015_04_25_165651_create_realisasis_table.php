@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCapaiansTable extends Migration {
+class CreateRealisasisTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,12 @@ class CreateCapaiansTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('capaians', function(Blueprint $table)
+		Schema::create('realisasi', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('tapkin_id');
+			$table->enum('waktu', [1,2,3,4]);
+			$table->text('uraian');
 			$table->timestamps();
 		});
 	}
@@ -27,7 +30,7 @@ class CreateCapaiansTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('capaians');
+		Schema::drop('realisasi');
 	}
 
 }

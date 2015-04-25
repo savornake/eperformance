@@ -12,9 +12,12 @@ class CreateAnggaransTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('anggarans', function(Blueprint $table)
+		Schema::create('anggaran', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('rkt_id');
+			$table->enum('bulan', [1,2,3,4,5,6,7,8,9,10,11,12]);
+			$table->integer('pagu');
 			$table->timestamps();
 		});
 	}
@@ -27,7 +30,7 @@ class CreateAnggaransTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('anggarans');
+		Schema::drop('anggaran');
 	}
 
 }

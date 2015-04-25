@@ -1,5 +1,1 @@
-@extends('layout.main')
-
-@section('content')
-
-@stop
+X:\Code\laravel\eperformance\app/views/tapkins/edit.blade.php

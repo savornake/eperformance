@@ -27,6 +27,8 @@ Route::group(['prefix' => 'renstra'], function()
 
 	Route::get('{renstra_id}/indikator', ['as' => 'renstra.indikator.json', 'uses' => 'IndikatorController@getRenstraJson']);
 	Route::post('{renstra_id}/indikator', ['as' => 'renstra.indikator.store', 'uses' => 'IndikatorController@postRenstra']);
+	Route::put('{renstra_id}/indikator/{indikator_id}', ['as' => 'renstra.indikator.store', 'uses' => 'IndikatorController@putRenstra']);
+
 });
 
 

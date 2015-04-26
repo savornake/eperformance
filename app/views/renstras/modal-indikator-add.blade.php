@@ -8,7 +8,7 @@
         <h4 class="modal-title" id="indikatorModalAddLabel">Tambah Indikator</h4>
       </div>
       <div class="modal-body">
-        {{ Form::open(array('url' => 'renstras', 'id' => 'form-renstra-add')) }}
+        {{ Form::open(array('url' => 'renstras', 'id' => 'form-indikator-add')) }}
 
         <div class="form-group">
           {{ Form::label('indikator_kinerja', 'Indikator Kinerja') }}
@@ -36,7 +36,7 @@
           {{ Form::textarea('kegiatan', null, array('class' => 'form-control', 'rows' => 3)) }}
         </div>
 
-        {{ Form::submit('Simpan', array('class' => 'btn btn-primary', 'id' => 'btn-save-renstra')) }}
+        {{ Form::submit('Simpan', array('class' => 'btn btn-primary', 'id' => 'btn-save-indikator')) }}
 
         {{ Form::close() }}
       </div>

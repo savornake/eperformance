@@ -55,13 +55,13 @@
 @section('script')
 <script type="text/javascript">
 
-  var selectedId;
+  var selectedId, selectedChildId;
 
   $(function() {});
 
   $('textarea').css('overflow', 'hidden').autogrow();
 
-  $('#form-renstra-add, #form-renstra-edit, #form-renstra-delete').click(function() {
+  $('#form-renstra-add, #form-renstra-edit, #form-renstra-delete, #form-indikator-add').click(function() {
     return false;
   });
 
@@ -76,6 +76,16 @@
       console.log(resp);
       if(resp.status == 'success') {
         $('#renstraModalAdd').modal('hide');
+        $('#renstra-table').datagrid('reload');
+      }
+    });
+  });
+
+   $('#btn-save-indikator').click(function() {
+    $.post("{{ url('renstra') }}/"+selectedId+"/indikator", $('#form-indikator-add').serialize(), function(resp) {
+      console.log(resp);
+      if(resp.status == 'success') {
+        $('#indikatorModalAdd').modal('hide');
         $('#renstra-table').datagrid('reload');
       }
     });
@@ -147,6 +157,8 @@
             $('#indikatorModalAdd').modal({
               backdrop: 'static'
             });
+
+            selectedId =  row.id;
           }
         },{
           iconCls: 'icon-edit',

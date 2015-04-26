@@ -10,7 +10,7 @@ class Indikator extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = ['parent_id','indikator_kinerja','tipe','target','waktu','kegiatan','keterangan'];
 
 	public function rkt()
 	{

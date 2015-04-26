@@ -36,6 +36,14 @@ Route::group(['prefix' => 'tapkin'], function()
 });
 
 /**
+ * Penetapan kinerja route block
+ */
+Route::group(['prefix' => 'rkt'], function() 
+{
+	Route::post('json', ['as' => 'rkt.json', 'uses' => 'RktController@postJson']);
+});
+
+/**
  * Resource route
  */
 Route::resource('users', 'UsersController');

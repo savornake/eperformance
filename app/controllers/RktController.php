@@ -1,5 +1,7 @@
 <?php
 
+use Akung\Repositories\Listing;
+
 class RktController extends \BaseController {
 
 	/**
@@ -11,7 +13,8 @@ class RktController extends \BaseController {
 	{
 		$rkts = Rkt::all();
 
-		return View::make('rkts.index', compact('rkts'));
+		return View::make('rkts.index', compact('rkts'))
+			->with('biro', Listing::biro());
 	}
 
 	/**
@@ -35,12 +38,24 @@ class RktController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return [
+				'status'	=> 'fail',
+				'messages'	=> $validator
+			];
 		}
 
-		Rkt::create($data);
-
-		return Redirect::route('rkts.index');
+		if(Rkt::create($data))
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
 	}
 
 	/**
@@ -102,6 +117,34 @@ class RktController extends \BaseController {
 		Rkt::destroy($id);
 
 		return Redirect::route('rkts.index');
+	}
+
+	/**
+	 * Display json 
+	 * @return [type]
+	 */
+	public function postJson()
+	{
+		$tapkins = Rkt::with('biro')->get();
+
+		$holder = [];
+		
+		$tapkinArray = $tapkins->toArray();
+		for ($i = 0; $i < count($tapkinArray); $i++) {
+			foreach ($tapkinArray[$i] as $key => $value) {
+				//dd(count($value));
+				if (count($value) == 1) {
+					$holder[$i][$key] = $value;
+				} elseif (count($value) > 1) {
+					# code...
+					foreach ($value as $k => $v) {
+						$holder[$i][$key . '-' . $k] = $v;
+					}
+				} 
+			}
+		}
+
+		return Response::json($holder);
 	}
 
 }

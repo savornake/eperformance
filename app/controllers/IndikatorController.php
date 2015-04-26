@@ -37,4 +37,37 @@ class IndikatorController extends \BaseController {
 		}
 	}
 
+	public function putRenstra($renstraId, $indikatorId)
+	{
+		$indikator = Indikator::find($indikatorId);
+
+		$indikator->indikator_kinerja = Input::get('indikator_kinerja');
+		$indikator->target = Input::get('target');
+		$indikator->waktu = Input::get('waktu');
+		$indikator->kegiatan = Input::get('kegiatan');
+
+		if($indikator->save()) 
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
+	}
+
+	public function deleteRenstra($renstraId, $indikatorId)
+	{
+		Indikator::destroy($indikatorId);
+
+		//return Redirect::route('renstras.index');
+		return [
+			'status'	=> 'success'
+		];
+	}
+
 }

@@ -46,6 +46,8 @@
   @include('renstras.modal-edit')
   @include('renstras.modal-delete')
   @include('renstras.modal-indikator-add')
+  @include('renstras.modal-indikator-edit')
+  @include('renstras.modal-indikator-delete')
 
 @stop
 
@@ -61,7 +63,7 @@
 
   $('textarea').css('overflow', 'hidden').autogrow();
 
-  $('#form-renstra-add, #form-renstra-edit, #form-renstra-delete, #form-indikator-add').click(function() {
+  $('#form-renstra-add, #form-renstra-edit, #form-renstra-delete, #form-indikator-add, #form-indikator-edit, #form-indikator-delete').click(function() {
     return false;
   });
 
@@ -103,11 +105,33 @@
     });
   });
 
+  $('#btn-update-indikator').click(function() {
+
+    //console.log("{{ url('/') }}/renstra/"+selectedId);
+
+    $.post("{{ url('renstra') }}/"+selectedId+"/indikator/"+selectedChildId, $('#form-indikator-edit').serialize(), function(resp) {
+      if(resp.status == 'success') {
+        $('#indikatorModalEdit').modal('hide');
+        $('#renstra-table').datagrid('reload');
+      }
+    });
+  });
+
   $('#btn-delete-renstra').click(function() {
 
     $.post("{{ url('/') }}/renstra/"+selectedId, $('#form-renstra-delete').serialize(), function(resp) {
       if(resp.status == 'success') {
         $('#renstraModalDelete').modal('hide');
+        $('#renstra-table').datagrid('reload');
+      }
+    });
+  });
+
+  $('#btn-delete-indikator').click(function() {
+
+    $.post("{{ url('renstra') }}/"+selectedId+"/indikator/"+selectedChildId, $('#form-indikator-delete').serialize(), function(resp) {
+      if(resp.status == 'success') {
+        $('#indikatorModalDelete').modal('hide');
         $('#renstra-table').datagrid('reload');
       }
     });
@@ -127,7 +151,7 @@
     pagination: true,
     striped: true,
     detailFormatter:function(index,row){
-      return '<div style="padding:2px"><table class="indikator-table"></table></div>';
+      return '<div style="padding:2px;background-color: #CCC;"><table class="indikator-table"></table></div>';
     },
     onSelect: function(index, row) {
       selectedId = row.id;
@@ -163,11 +187,30 @@
         },{
           iconCls: 'icon-edit',
           text: 'Edit',
-          handler: function(){alert('help')}
+          handler: function(){
+
+            var selectedRow = indikator.datagrid('getSelected');
+            selectedId = row.id;
+            $('#form-indikator-edit #indikator_kinerja').val(selectedRow.indikator_kinerja);
+            $('#form-indikator-edit #target').val(selectedRow.target);
+            $('#form-indikator-edit #waktu').val(selectedRow.waktu);
+            $('#form-indikator-edit #kegiatan').val(selectedRow.kegiatan);
+
+            $('#indikatorModalEdit').modal({
+              backdrop: 'static'
+            });
+
+          }
         },{
           iconCls: 'icon-remove',
           text: 'Delete',
-          handler: function(){alert('help')}
+          handler: function(){
+            selectedId = row.id;
+
+            $('#indikatorModalDelete').modal({
+              backdrop: 'static'
+            });
+          }
         }],
         onResize:function(){
           $('#renstra-table').datagrid('fixDetailRowHeight',index);
@@ -176,7 +219,11 @@
           setTimeout(function(){
             $('#renstra-table').datagrid('fixDetailRowHeight',index);
           }, 0);
-        }
+        },
+        onSelect: function(index, row) {
+          selectedChildId = row.id;
+          //$('#renstra-edit, #renstra-delete').removeClass('disabled');
+        },
       });
 
       $('#renstra-table').datagrid('fixDetailRowHeight',index);

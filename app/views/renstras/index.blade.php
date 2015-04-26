@@ -47,7 +47,7 @@
   @include('renstras.modal-delete')
   @include('renstras.modal-indikator-add')
   @include('renstras.modal-indikator-edit')
-
+  @include('renstras.modal-indikator-delete')
 
 @stop
 
@@ -63,7 +63,7 @@
 
   $('textarea').css('overflow', 'hidden').autogrow();
 
-  $('#form-renstra-add, #form-renstra-edit, #form-renstra-delete, #form-indikator-add, #form-indikator-edit').click(function() {
+  $('#form-renstra-add, #form-renstra-edit, #form-renstra-delete, #form-indikator-add, #form-indikator-edit, #form-indikator-delete').click(function() {
     return false;
   });
 
@@ -122,6 +122,16 @@
     $.post("{{ url('/') }}/renstra/"+selectedId, $('#form-renstra-delete').serialize(), function(resp) {
       if(resp.status == 'success') {
         $('#renstraModalDelete').modal('hide');
+        $('#renstra-table').datagrid('reload');
+      }
+    });
+  });
+
+  $('#btn-delete-indikator').click(function() {
+
+    $.post("{{ url('renstra') }}/"+selectedId+"/indikator/"+selectedChildId, $('#form-indikator-delete').serialize(), function(resp) {
+      if(resp.status == 'success') {
+        $('#indikatorModalDelete').modal('hide');
         $('#renstra-table').datagrid('reload');
       }
     });
@@ -194,7 +204,13 @@
         },{
           iconCls: 'icon-remove',
           text: 'Delete',
-          handler: function(){alert('help')}
+          handler: function(){
+            selectedId = row.id;
+
+            $('#indikatorModalDelete').modal({
+              backdrop: 'static'
+            });
+          }
         }],
         onResize:function(){
           $('#renstra-table').datagrid('fixDetailRowHeight',index);

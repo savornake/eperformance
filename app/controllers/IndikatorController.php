@@ -60,4 +60,14 @@ class IndikatorController extends \BaseController {
 		}
 	}
 
+	public function deleteRenstra($renstraId, $indikatorId)
+	{
+		Indikator::destroy($indikatorId);
+
+		//return Redirect::route('renstras.index');
+		return [
+			'status'	=> 'success'
+		];
+	}
+
 }

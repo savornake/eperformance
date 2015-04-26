@@ -15,7 +15,7 @@
 @section('content')
   <div class="row">
     <div class="col-sm-12">
-      <h2> Penetapan Kinerja </h2>
+      <h2> Rencana Kegiatan Tahunan </h2>
     </div>
   </div>
 
@@ -68,6 +68,25 @@
 		});
 	});
 
+	$('#btn-update-rkt').click(function() {
+		$.post("{{ url('/') }}/rkt/"+selectedId, $('#form-rkt-edit').serialize(), function(resp) {
+			if(resp.status == 'success') {
+				$('#rktModalEdit').modal('hide');
+				$('#rkt-table').datagrid('reload');
+			}
+		});
+	});
+
+	$('#btn-delete-rkt').click(function() {
+
+		$.post("{{ url('/') }}/rkt/"+selectedId, $('#form-rkt-delete').serialize(), function(resp) {
+			if(resp.status == 'success') {
+				$('#rktModalDelete').modal('hide');
+				$('#rkt-table').datagrid('reload');
+			}
+		});
+	});
+
 	$('#rkt-table').datagrid({
 		url: "{{ URL::route('rkt.json') }}",
 		columns:[[
@@ -88,6 +107,24 @@
 
 	$('#rkt-add').click(function() {
 		$('#rktModalAdd').modal({
+			backdrop: 'static'
+		});
+	});
+
+	
+	$('#rkt-edit').click(function() {
+
+		var selectedRow = $('#rkt-table').datagrid('getSelected');
+		$('#form-rkt-edit #biro_id').val(selectedRow.biro_id);
+		$('#form-rkt-edit #sasaran').val(selectedRow.sasaran);
+
+		$('#rktModalEdit').modal({
+			backdrop: 'static'
+		});
+	});
+
+	$('#rkt-delete').click(function() {
+		$('#rktModalDelete').modal({
 			backdrop: 'static'
 		});
 	});

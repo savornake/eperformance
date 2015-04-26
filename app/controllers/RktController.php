@@ -98,12 +98,24 @@ class RktController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return [
+				'status'	=> 'fail',
+				'messages'	=> $validator
+			];
 		}
 
-		$rkt->update($data);
-
-		return Redirect::route('rkts.index');
+		if($rkt->update($data))
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
 	}
 
 	/**
@@ -116,7 +128,9 @@ class RktController extends \BaseController {
 	{
 		Rkt::destroy($id);
 
-		return Redirect::route('rkts.index');
+		return [
+			'status'	=> 'success'
+		];
 	}
 
 	/**

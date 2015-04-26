@@ -9,6 +9,7 @@
 {{-- List library javascript section --}}
 @section('scripts')
   {{ HTML::script('js/easyui/jquery.easyui.min.js') }}
+  {{ HTML::script('js/easyui/datagrid-detailview.js') }}
   {{ HTML::script('js/jquery.autogrow-textarea.js') }}
 @stop
 
@@ -44,6 +45,7 @@
   @include('renstras.modal-add')
   @include('renstras.modal-edit')
   @include('renstras.modal-delete')
+  @include('renstras.modal-indikator-add')
 
 @stop
 
@@ -104,21 +106,70 @@
   $('#renstra-table').datagrid({
     url: "{{ URL::route('renstra.json') }}",
     columns:[[
-      {field:'sasaran',title:'Sasaran'},
-      {field:'tujuan',title:'Tujuan'}
+      {field:'sasaran',title:'Sasaran', width: 200},
+      {field:'tujuan',title:'Tujuan', width: 200}
     ]],
-    idField: 'id',  
+    idField: 'id',
+    view: detailview,  
     fitColumns: true,
     rownumbers: true,
     singleSelect: true,
     pagination: true,
     striped: true,
+    detailFormatter:function(index,row){
+      return '<div style="padding:2px"><table class="indikator-table"></table></div>';
+    },
     onSelect: function(index, row) {
-      /*console.log(index);
-      console.log(row);*/
       selectedId = row.id;
       $('#renstra-edit, #renstra-delete').removeClass('disabled');
-    }
+    },
+    onExpandRow: function(index,row) {
+      var indikator = $(this).datagrid('getRowDetail', index).find('table.indikator-table');
+      
+      indikator.datagrid({
+        url: "{{ url('renstra') }}/"+row.id+"/indikator",
+        columns: [[
+          {field:'indikator_kinerja', title: 'Indikator'},
+          {field:'target', title: 'Target'},
+          {field:'waktu', title: 'Waktu'},
+          {field:'kegiatan', title: 'Kegiatan'}
+        ]],
+        idField: 'id',
+        method: 'get',
+        fitColumns: true,
+        rownumbers: true,
+        singleSelect: true,
+        striped: true,
+        toolbar: [{
+          iconCls: 'icon-add',
+          text: 'Add',
+          handler: function(){
+            $('#indikatorModalAdd').modal({
+              backdrop: 'static'
+            });
+          }
+        },{
+          iconCls: 'icon-edit',
+          text: 'Edit',
+          handler: function(){alert('help')}
+        },{
+          iconCls: 'icon-remove',
+          text: 'Delete',
+          handler: function(){alert('help')}
+        }],
+        onResize:function(){
+          $('#renstra-table').datagrid('fixDetailRowHeight',index);
+        },
+        onLoadSuccess:function(){
+          setTimeout(function(){
+            $('#renstra-table').datagrid('fixDetailRowHeight',index);
+          }, 0);
+        }
+      });
+
+      $('#renstra-table').datagrid('fixDetailRowHeight',index);
+    },
+   
   });
 
   /**

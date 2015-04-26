@@ -24,6 +24,8 @@ Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
 Route::group(['prefix' => 'renstra'], function() 
 {
 	Route::post('json', ['as' => 'renstra.json', 'uses' => 'RenstraController@postJson']);
+
+	Route::get('{renstra_id}/indikator', ['as' => 'renstra.indikator.json', 'uses' => 'IndikatorController@getRenstraJson']);
 });
 
 
@@ -49,9 +51,10 @@ Route::group(['prefix' => 'rkt'], function()
 Route::resource('users', 'UsersController');
 Route::resource('biro', 'BiroController');
 Route::resource('renstra', 'RenstraController');
+//Route::resource('renstra.indikator', 'RenstraIndikatorController');
 Route::resource('tapkin', 'TapkinController');
 Route::resource('rkt', 'RktController');
-Route::resource('indikator', 'IndikatorController');
+//Route::resource('indikator', 'IndikatorController');
 Route::resource('realisasi', 'RealisasiController');
 Route::resource('anggaran', 'AnggaranController');
 Route::resource('rincian', 'RincianController');

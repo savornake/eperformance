@@ -17,8 +17,6 @@ class CreateRenstrasTable extends Migration {
 			$table->increments('id');
 			$table->text('sasaran');
 			$table->text('tujuan');
-			$table->text('indikator');
-			$table->text('kegiatan');
 			$table->timestamps();
 		});
 	}

@@ -17,7 +17,7 @@ class HomeController extends BaseController {
 
 	public function menuUtama()
 	{
-		return View::make('home/home');
+		return View::make('home.home');
 	}
 
 }

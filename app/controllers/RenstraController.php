@@ -35,12 +35,26 @@ class RenstraController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			//return Redirect::back()->withErrors($validator)->withInput();
+			return [
+				'status'	=> 'fail',
+				'messages'	=> $validator
+			];
 		}
 
-		Renstra::create($data);
+		if(Renstra::create($data)) 
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
 
-		return Redirect::route('renstras.index');
 	}
 
 	/**
@@ -83,12 +97,27 @@ class RenstraController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			//return Redirect::back()->withErrors($validator)->withInput();
+			return [
+				'status'	=> 'fail',
+				'messages'	=> $validator
+			];
 		}
 
-		$renstra->update($data);
+		if($renstra->update($data)) 
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
 
-		return Redirect::route('renstras.index');
+		//return Redirect::route('renstras.index');
 	}
 
 	/**
@@ -101,7 +130,20 @@ class RenstraController extends \BaseController {
 	{
 		Renstra::destroy($id);
 
-		return Redirect::route('renstras.index');
+		//return Redirect::route('renstras.index');
+		return [
+			'status'	=> 'success'
+		];
+	}
+
+	/**
+	 * Display json of all rencana strategis
+	 * @return [type]
+	 */
+	public function postJson()
+	{
+		return Renstra::all();
+		
 	}
 
 }

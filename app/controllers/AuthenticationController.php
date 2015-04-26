@@ -17,7 +17,12 @@ class AuthenticationController extends BaseController {
 
 	public function login()
 	{
-		return View::make('authentication.login');
+		if (Sentry::check()) {
+			return View::make('home.home');
+		} else {
+			return View::make('authentication.login');
+		
+		}
 	}
 
 	public function logout()

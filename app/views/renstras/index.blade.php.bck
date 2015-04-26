@@ -1,0 +1,98 @@
+
+{{--
+<div class="row">
+  <div class="col-sm-12">
+    <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#renstraModal">   
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+      Tambah
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tr>
+        <th> No. </th>
+        <th>Tujuan</th>
+        <th>Sasaran Strategis</th>
+        <th>Indikator Kinerja</th>
+        <th>Program Kegiatan</th>
+        <th>Sub Kegiatan</th>
+        <th>Edit</th>
+      </tr>
+
+      <?php $i = 1; ?>
+      @foreach ($renstras as $renstra)
+      <tr>
+        <td> {{$i}}</td>
+        <td> {{ $renstra->tujuan }}</td>
+        <td> {{ $renstra->sasaran_strategis }} </td>
+        <td> {{ $renstra->indikator }} </td>
+        <td> {{ $renstra->program_kegiatan }} </td>
+        <td> {{ $renstra->sub_kegiatan }}</td>
+        <td>
+          <a class="btn btn-xs btn-warning btn-block" href="{{ URL::to('renstras/' . $renstra->id . '/edit') }}">Edit</a>
+          {{ Form::open(array('url' => 'renstras/' . $renstra->id, 'class' => 'pull-right')) }}
+            {{ Form::hidden('_method', 'DELETE') }}
+            {{ Form::submit('Hapus', array('class' => 'btn btn-xs btn-danger btn-block')) }}
+          {{ Form::close() }}
+        </td> 
+      </tr>
+      <?php $i++; ?>
+      @endforeach
+    </table>
+  </div>
+</div>
+
+<!-- Modal Tambah -->
+<div class="modal fade" id="renstraModal" tabindex="-1" role="dialog" aria-labelledby="renstraModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="renstraModalLabel">Tambah Renstra</h4>
+      </div>
+      <div class="modal-body">
+        {{ Form::open(array('url' => 'renstras')) }}
+
+    <div class="form-group">
+        {{ Form::label('tujuan', 'Tujuan') }}
+        {{ Form::textarea('tujuan', null, array('class' => 'summernote')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('sasaran_strategis', 'Sasaran Strategis') }}
+        {{ Form::textarea('sasaran_strategis', null, array('class' => 'summernote')) }}
+    </div>
+
+     <div class="form-group">
+        {{ Form::label('indikator', 'Indikator') }}
+        {{ Form::textarea('indikator', null, array('class' => 'summernote')) }}
+    </div>
+
+     <div class="form-groups">
+        {{ Form::label('program_kegiatan', 'Program Kegiatan') }}
+        {{ Form::textarea('program_kegiatan', null, array('class' => 'summernote')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('sub_kegiatan', 'Sub Kegiatan') }}
+        <!-- <div class="summernote"></div> -->
+        {{ Form::textarea('sub_kegiatan', null, array('class' => 'summernote')) }}
+     </div>
+
+    
+
+    {{ Form::submit('Tambah Renstra', array('class' => 'btn btn-primary')) }}
+
+{{ Form::close() }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button>
+ -->      </div>
+    </div>
+  </div>
+</div>
+--}}

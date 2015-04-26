@@ -18,6 +18,17 @@ Route::get('logout', array('as' => 'auth.logout', 'uses' => 'AuthenticationContr
 Route::get('register', array('as' => 'auth.register', 'uses' => 'AuthenticationController@register'));
 Route::get('home', array('as' => 'home', 'uses' => 'HomeController@menuUtama'));
 
+/**
+ * Rencana strategis route block
+ */
+Route::group(['prefix' => 'renstra'], function() 
+{
+	Route::post('json', ['as' => 'renstra.json', 'uses' => 'RenstraController@postJson']);
+});
+
+/**
+ * Resource route
+ */
 Route::resource('users', 'UsersController');
 Route::resource('biro', 'BiroController');
 Route::resource('renstra', 'RenstraController');
@@ -28,6 +39,8 @@ Route::resource('realisasi', 'RealisasiController');
 Route::resource('anggaran', 'AnggaranController');
 Route::resource('rincian', 'RincianController');
 Route::resource('subkegiatan', 'SubkegiatanController');
+
+
 
 /*
 Route::resource('sasaran', 'SasaransController');

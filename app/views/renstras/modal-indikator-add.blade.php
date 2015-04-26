@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-          {{ Form::label('waktu', 'Waktu') }}
+          {{ Form::label('waktu', 'Waktu (Triwulan)') }}
           {{ Form::select('waktu', [
             1 => 'Triwulan 1',
             2 => 'Triwulan 2',

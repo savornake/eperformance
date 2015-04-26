@@ -1,4 +1,7 @@
 <?php
+//use Akung\Repositories\Easyui;
+use Akung\Repositories\Listing;
+
 
 class TapkinController extends \BaseController {
 
@@ -11,7 +14,8 @@ class TapkinController extends \BaseController {
 	{
 		$tapkins = Tapkin::all();
 
-		return View::make('tapkins.index', compact('tapkins'));
+		return View::make('tapkins.index', compact('tapkins'))
+			->with('biro', Listing::biro());
 	}
 
 	/**
@@ -35,12 +39,24 @@ class TapkinController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return [
+				'status'	=> 'fail',
+				'messages'	=> $validator
+			];
 		}
 
-		Tapkin::create($data);
-
-		return Redirect::route('tapkins.index');
+		if(Tapkin::create($data))
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
 	}
 
 	/**
@@ -102,6 +118,34 @@ class TapkinController extends \BaseController {
 		Tapkin::destroy($id);
 
 		return Redirect::route('tapkins.index');
+	}
+
+	/**
+	 * Display json 
+	 * @return [type]
+	 */
+	public function postJson()
+	{
+		$tapkins = Tapkin::with('biro')->get();
+
+		$holder = [];
+		
+		$tapkinArray = $tapkins->toArray();
+		for ($i = 0; $i < count($tapkinArray); $i++) {
+			foreach ($tapkinArray[$i] as $key => $value) {
+				//dd(count($value));
+				if (count($value) == 1) {
+					$holder[$i][$key] = $value;
+				} elseif (count($value) > 1) {
+					# code...
+					foreach ($value as $k => $v) {
+						$holder[$i][$key . '-' . $k] = $v;
+					}
+				} 
+			}
+		}
+
+		return Response::json($holder);
 	}
 
 }

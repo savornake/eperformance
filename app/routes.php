@@ -26,6 +26,15 @@ Route::group(['prefix' => 'renstra'], function()
 	Route::post('json', ['as' => 'renstra.json', 'uses' => 'RenstraController@postJson']);
 });
 
+
+/**
+ * Penetapan kinerja route block
+ */
+Route::group(['prefix' => 'tapkin'], function() 
+{
+	Route::post('json', ['as' => 'tapkin.json', 'uses' => 'TapkinController@postJson']);
+});
+
 /**
  * Resource route
  */

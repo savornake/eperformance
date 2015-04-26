@@ -41,9 +41,9 @@
     </div>
   </div>
 
-  @include('renstras.renstra-modal-add')
-  @include('renstras.renstra-modal-edit')
-  @include('renstras.renstra-modal-delete')
+  @include('renstras.modal-add')
+  @include('renstras.modal-edit')
+  @include('renstras.modal-delete')
 
 @stop
 

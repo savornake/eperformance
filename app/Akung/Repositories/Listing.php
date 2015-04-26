@@ -21,9 +21,9 @@ class Listing
 	public static function biro()
 	{
 		$biros = \Biro::all()->toArray();
-		$listBiro = [];
+		$listBiro = [ 0 => '-Pilih Biro-'];
 		foreach ($biros as $item) {
-			$listBiro[$item['id']] = $item['name'];
+			$listBiro[$item['id']] = $item['nama'];
 		}
 
 		return $listBiro;

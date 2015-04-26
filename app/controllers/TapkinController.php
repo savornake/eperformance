@@ -99,12 +99,24 @@ class TapkinController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return [
+				'status'	=> 'fail',
+				'messages'	=> $validator
+			];
 		}
 
-		$tapkin->update($data);
-
-		return Redirect::route('tapkins.index');
+		if($tapkin->update($data))
+		{
+			return [
+				'status'	=> 'success'
+			];
+		} 
+		else 
+		{
+			return [
+				'status'	=> 'fail'
+			];
+		}
 	}
 
 	/**
@@ -116,8 +128,9 @@ class TapkinController extends \BaseController {
 	public function destroy($id)
 	{
 		Tapkin::destroy($id);
-
-		return Redirect::route('tapkins.index');
+		return [
+			'status'	=> 'success'
+		];
 	}
 
 	/**

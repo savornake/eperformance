@@ -68,6 +68,25 @@
 		});
 	});
 
+	$('#btn-update-tapkin').click(function() {
+		$.post("{{ url('/') }}/tapkin/"+selectedId, $('#form-tapkin-edit').serialize(), function(resp) {
+			if(resp.status == 'success') {
+				$('#tapkinModalEdit').modal('hide');
+				$('#tapkin-table').datagrid('reload');
+			}
+		});
+	});
+
+	$('#btn-delete-tapkin').click(function() {
+
+		$.post("{{ url('/') }}/tapkin/"+selectedId, $('#form-tapkin-delete').serialize(), function(resp) {
+			if(resp.status == 'success') {
+				$('#tapkinModalDelete').modal('hide');
+				$('#tapkin-table').datagrid('reload');
+			}
+		});
+	});
+
 	$('#tapkin-table').datagrid({
 		url: "{{ URL::route('tapkin.json') }}",
 		columns:[[
@@ -88,6 +107,23 @@
 
 	$('#tapkin-add').click(function() {
 		$('#tapkinModalAdd').modal({
+			backdrop: 'static'
+		});
+	});
+
+	$('#tapkin-edit').click(function() {
+
+		var selectedRow = $('#tapkin-table').datagrid('getSelected');
+		$('#form-tapkin-edit #biro_id').val(selectedRow.biro_id);
+		$('#form-tapkin-edit #sasaran').val(selectedRow.sasaran);
+
+		$('#tapkinModalEdit').modal({
+			backdrop: 'static'
+		});
+	});
+
+	$('#tapkin-delete').click(function() {
+		$('#tapkinModalDelete').modal({
 			backdrop: 'static'
 		});
 	});

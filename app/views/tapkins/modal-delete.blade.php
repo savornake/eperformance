@@ -1,11 +1,11 @@
 
 {{-- Modal dialog section --}}
-<div class="modal fade" id="renstraModalDelete" tabindex="-1" role="dialog" aria-labelledby="renstraModalDeleteLabel" aria-hidden="true">
+<div class="modal fade" id="tapkinModalDelete" tabindex="-1" role="dialog" aria-labelledby="tapkinModalDeleteLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="renstraModalDeleteLabel">Hapus Renstra</h4>
+        <h4 class="modal-title" id="tapkinModalDeleteLabel">Hapus Renstra</h4>
       </div>
       <div class="modal-body">
         Apakah anda yakin ingin menghapus item ini?
@@ -13,14 +13,14 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
         {{ Form::open(array(
-          'url' => 'renstra/123', 
+          'url' => 'tapkin/123', 
           'method' => 'DELETE', 
-          'id' => 'form-renstra-delete', 
+          'id' => 'form-tapkin-delete', 
           'class' => 'pull-right')) }}
 
           {{ Form::submit('Ya', array(
             'class' => 'btn btn-danger', 
-            'id' => 'btn-delete-renstra')) }}
+            'id' => 'btn-delete-tapkin')) }}
         {{ Form::close() }}
       </div>
     </div>

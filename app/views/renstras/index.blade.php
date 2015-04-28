@@ -83,16 +83,6 @@
     });
   });
 
-   $('#btn-save-indikator').click(function() {
-    $.post("{{ url('renstra') }}/"+selectedId+"/indikator", $('#form-indikator-add').serialize(), function(resp) {
-      console.log(resp);
-      if(resp.status == 'success') {
-        $('#indikatorModalAdd').modal('hide');
-        $('#renstra-table').datagrid('reload');
-      }
-    });
-  });
-
   $('#btn-update-renstra').click(function() {
 
     //console.log("{{ url('/') }}/renstra/"+selectedId);
@@ -105,6 +95,26 @@
     });
   });
 
+  $('#btn-delete-renstra').click(function() {
+
+    $.post("{{ url('/') }}/renstra/"+selectedId, $('#form-renstra-delete').serialize(), function(resp) {
+      if(resp.status == 'success') {
+        $('#renstraModalDelete').modal('hide');
+        $('#renstra-table').datagrid('reload');
+      }
+    });
+  });
+
+  $('#btn-save-indikator').click(function() {
+    $.post("{{ url('renstra') }}/"+selectedId+"/indikator", $('#form-indikator-add').serialize(), function(resp) {
+      console.log(resp);
+      if(resp.status == 'success') {
+        $('#indikatorModalAdd').modal('hide');
+        $('#renstra-table').datagrid('reload');
+      }
+    });
+  });
+
   $('#btn-update-indikator').click(function() {
 
     //console.log("{{ url('/') }}/renstra/"+selectedId);
@@ -112,16 +122,6 @@
     $.post("{{ url('renstra') }}/"+selectedId+"/indikator/"+selectedChildId, $('#form-indikator-edit').serialize(), function(resp) {
       if(resp.status == 'success') {
         $('#indikatorModalEdit').modal('hide');
-        $('#renstra-table').datagrid('reload');
-      }
-    });
-  });
-
-  $('#btn-delete-renstra').click(function() {
-
-    $.post("{{ url('/') }}/renstra/"+selectedId, $('#form-renstra-delete').serialize(), function(resp) {
-      if(resp.status == 'success') {
-        $('#renstraModalDelete').modal('hide');
         $('#renstra-table').datagrid('reload');
       }
     });

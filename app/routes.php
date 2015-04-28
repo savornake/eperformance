@@ -25,7 +25,7 @@ Route::group(['prefix' => 'renstra'], function()
 {
 	Route::post('json', ['as' => 'renstra.json', 'uses' => 'RenstraController@postJson']);
 
-	Route::get('{renstra_id}/indikator', ['as' => 'renstra.indikator.json', 'uses' => 'IndikatorController@getRenstraJson']);
+	Route::get('{renstra_id}/indikator', ['as' => 'renstra.indikator.json', 'uses' => 'IndikatorController@getRenstra']);
 	Route::post('{renstra_id}/indikator', ['as' => 'renstra.indikator.store', 'uses' => 'IndikatorController@postRenstra']);
 	Route::put('{renstra_id}/indikator/{indikator_id}', ['as' => 'renstra.indikator.update', 'uses' => 'IndikatorController@putRenstra']);
 	Route::delete('{renstra_id}/indikator/{indikator_id}', ['as' => 'renstra.indikator.destroy', 'uses' => 'IndikatorController@deleteRenstra']);
@@ -38,6 +38,11 @@ Route::group(['prefix' => 'renstra'], function()
 Route::group(['prefix' => 'tapkin'], function() 
 {
 	Route::post('json', ['as' => 'tapkin.json', 'uses' => 'TapkinController@postJson']);
+
+	Route::get('{tapkin_id}/indikator', ['as' => 'tapkin.indikator.json', 'uses' => 'IndikatorController@getTapkin']);
+	Route::post('{tapkin_id}/indikator', ['as' => 'tapkin.indikator.store', 'uses' => 'IndikatorController@postTapkin']);
+	Route::put('{tapkin_id}/indikator/{indikator_id}', ['as' => 'tapkin.indikator.update', 'uses' => 'IndikatorController@putTapkin']);
+	Route::delete('{tapkin_id}/indikator/{indikator_id}', ['as' => 'tapkin.indikator.destroy', 'uses' => 'IndikatorController@deleteTapkin']);
 });
 
 /**
@@ -46,6 +51,11 @@ Route::group(['prefix' => 'tapkin'], function()
 Route::group(['prefix' => 'rkt'], function() 
 {
 	Route::post('json', ['as' => 'rkt.json', 'uses' => 'RktController@postJson']);
+
+	Route::get('{rkt_id}/indikator', ['as' => 'rkt.indikator.json', 'uses' => 'IndikatorController@getRkt']);
+	Route::post('{rkt_id}/indikator', ['as' => 'rkt.indikator.store', 'uses' => 'IndikatorController@postRkt']);
+	Route::put('{rkt_id}/indikator/{indikator_id}', ['as' => 'rkt.indikator.update', 'uses' => 'IndikatorController@putRkt']);
+	Route::delete('{rkt_id}/indikator/{indikator_id}', ['as' => 'rkt.indikator.destroy', 'uses' => 'IndikatorController@deleteRkt']);
 });
 
 /**

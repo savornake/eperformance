@@ -15,22 +15,6 @@
           {{ Form::textarea('indikator_kinerja', null, array('class' => 'form-control', 'rows' => 3)) }}
         </div>
 
-        <div class="form-group has-feedback">
-          {{ Form::label('target', 'Target', ['class' => '']) }}
-          {{ Form::text('target', null, array('class' => 'form-control')) }} 
-        </div>
-
-        <div class="form-group">
-          {{ Form::label('waktu', 'Waktu (Triwulan)') }}
-          {{ Form::select('waktu', [
-            1 => 'Triwulan 1',
-            2 => 'Triwulan 2',
-            3 => 'Triwulan 3',
-            4 => 'Triwulan 4'
-
-          ], 0, ['class' => 'form-control']) }}
-        </div>
-
          <div class="form-group">
           {{ Form::label('kegiatan', 'Kegiatan') }}
           {{ Form::textarea('kegiatan', null, array('class' => 'form-control', 'rows' => 3)) }}

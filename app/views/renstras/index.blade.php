@@ -163,10 +163,8 @@
       indikator.datagrid({
         url: "{{ url('renstra') }}/"+row.id+"/indikator",
         columns: [[
-          {field:'indikator_kinerja', title: 'Indikator', width: 700},
-          {field:'target', title: 'Target', width: 700},
-          {field:'waktu', title: 'Waktu (Triwulan)', width: 700},
-          {field:'kegiatan', title: 'Kegiatan', width: 700}
+          {field:'indikator_kinerja', title: 'Indikator', width: 300},
+          {field:'kegiatan', title: 'Kegiatan', width: 300}
         ]],
         idField: 'id',
         method: 'get',

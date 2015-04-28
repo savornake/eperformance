@@ -31,8 +31,8 @@
         </div>
 
          <div class="form-group">
-          {{ Form::label('kegiatan', 'Kegiatan') }}
-          {{ Form::textarea('kegiatan', null, array('class' => 'form-control', 'rows' => 3)) }}
+          {{ Form::label('keterangan', 'keterangan') }}
+          {{ Form::textarea('keterangan', null, array('class' => 'form-control', 'rows' => 3)) }}
         </div>
 
         {{ Form::submit('Simpan', array('class' => 'btn btn-primary', 'id' => 'btn-save-indikator')) }}
